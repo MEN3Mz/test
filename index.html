@@ -1,64 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elbaz Auto Trade</title>
-    <!-- Google Fonts: Poppins for modern typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
-    <!-- Tailwind CSS CDN for utility-first styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* Custom font family for the entire body */
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            /* Background color and text color defined globally */
-            @apply bg-[#1e1e40] text-white;
-        }
-        /* Custom styles for the navigation item underline effect */
-        
-        .nav-item-underline::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            /* Always 100% width for the golden line */
-            height: 2px;
-            background-color: #c2a650;
-            /* No transition needed as it's always visible */
-        }
-        /* Custom scroll behavior for smooth navigation */
-        
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elbaz Auto Trade</title>
+  <!-- Google Fonts: Poppins for modern typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN for utility-first styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom font family for the entire body */
+    body {
+      font-family: 'Poppins', sans-serif;
+      /* Background color and text color defined globally */
+      @apply bg-[#1e1e40] text-white;
+    }
 
+    /* Custom styles for the navigation item underline effect */
+    .nav-item-underline::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%; /* Always 100% width for the golden line */
+      height: 2px;
+      background-color: #c2a650;
+      /* No transition needed as it's always visible */
+    }
+
+    /* Custom scroll behavior for smooth navigation */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Styles for the custom message box */
+    .message-box {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #292955;
+      color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      z-index: 10000;
+      display: none; /* Hidden by default */
+      text-align: center;
+      max-width: 300px;
+      width: 90%;
+    }
+    .message-box button {
+      background-color: #c2a650;
+      color: #fff;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 5px;
+      margin-top: 15px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .message-box button:hover {
+      background-color: #a88d44;
+    }
+  </style>
+</head>
 <body class="antialiased">
 
-    <!-- Header with Centered Navigation -->
-    <header class="sticky top-0 z-10 grid grid-cols-3 items-center px-4 py-3 md:px-10 md:py-4 bg-[#1e1e40] border-b-2 border-[#c2a650] shadow-lg">
-        <!-- Logo and Company Name -->
-        <div class="logo flex items-center gap-2 col-span-1">
-            <!-- Logo image source -->
-            <img src="https://scontent.fcai21-2.fna.fbcdn.net/v/t39.30808-6/443719706_122147714894056258_8787980356174592514_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=hoUfqxmO7PEQ7kNvwHioAew&_nc_oc=AdmRyNpTwiuVXm9Jwx-nqICPAOxfwfC3RvvNrh4OBBFhEkpLbrHFDWAjeijli526GFE&_nc_zt=23&_nc_ht=scontent.fcai21-2.fna&_nc_gid=Me17bUDPeBj9_NAz17E3CA&oh=00_AfOFj2lnus55UBjm9jfmGP9tF9g34zjST9tP9EBiDSZvtw&oe=686C1874"
-                alt="" class="h-8 w-8 md:h-10 md:w-10 rounded-full object-cover">
-            <span class="text-xl md:text-2xl text-white font-bold">Elbaz Auto Trade</span>
-        </div>
+<!-- Header with Centered Navigation -->
+<header class="sticky top-0 z-10 grid grid-cols-3 items-center px-4 py-3 md:px-10 md:py-4 bg-[#1e1e40] border-b-2 border-[#c2a650] shadow-lg">
+  <!-- Logo and Company Name -->
+  <div class="logo flex items-center gap-2 col-span-1">
+    <!-- Logo image source -->
+    <img src="https://scontent.fcai21-2.fna.fbcdn.net/v/t39.30808-6/443719706_122147714894056258_8787980356174592514_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=hoUfqxmO7PEQ7kNkNvwHioAew&_nc_oc=AdmRyNpTwiuVXm9Jwx-nqICPAOxfwfC3RvvNrh4OBBFhEkpLbrHFDWAjeijli526GFE&_nc_zt=23&_nc_ht=scontent.fcai21-2.fna&_nc_gid=Me17bUDPeBj9_NAz17E3CA&oh=00_AfOFj2lnus55UBjm9jfmGP9tF9g34zjST9tP9EBiDSZvtw&oe=686C1874" alt="Elbaz Auto Trade Logo" class="h-8 w-8 md:h-10 md:w-10 rounded-full object-cover">
+    <span class="text-xl md:text-2xl text-white font-bold">Elbaz Auto Trade</span>
+  </div>
 
-        <!-- Centered Navigation -->
-        <nav class="nav-center col-span-1 flex justify-center gap-4 md:gap-10 transform -translate-x-0 md:-translate-x-5">
-            <!-- Navigation items with hover-move and always-on underline effects -->
-            <div class="nav-item group relative text-base md:text-lg text-white cursor-pointer pb-1 nav-item-underline transition-transform duration-300 hover:-translate-y-1" data-target="home">Home</div>
-            <div class="nav-item group relative text-base md:text-lg text-white cursor-pointer pb-1 nav-item-underline transition-transform duration-300 hover:-translate-y-1" data-target="about">About</div>
-        </nav>
+  <!-- Centered Navigation -->
+  <nav class="nav-center col-span-1 flex justify-center gap-4 md:gap-10 transform -translate-x-0 md:-translate-x-5">
+    <!-- Navigation items with hover-move and always-on underline effects -->
+    <div class="nav-item group relative text-base md:text-lg text-white cursor-pointer pb-1 nav-item-underline transition-transform duration-300 hover:-translate-y-1" data-target="home">Home</div>
+    <div class="nav-item group relative text-base md:text-lg text-white cursor-pointer pb-1 nav-item-underline transition-transform duration-300 hover:-translate-y-1" data-target="about">About</div>
+  </nav>
 
-        <!-- Contact Button -->
-        <button id="contactBtn" class="contact-btn col-span-1 justify-self-end bg-[#55567a] text-white border-2 border-[#c2a650] px-4 py-2 md:px-5 md:py-2.5 rounded-full text-sm md:text-base cursor-pointer transition hover:bg-[#6e70a1] focus:outline-none focus:ring-2 focus:ring-[#c2a650]">
+  <!-- Contact Button -->
+  <button id="contactBtn" class="contact-btn col-span-1 justify-self-end bg-[#55567a] text-white border-2 border-[#c2a650] px-4 py-2 md:px-5 md:py-2.5 rounded-full text-sm md:text-base cursor-pointer transition hover:bg-[#6e70a1] focus:outline-none focus:ring-2 focus:ring-[#c2a650]">
     <span class="inline-flex items-center gap-2">
       <!-- Phone icon SVG -->
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 122.88 84.04" fill="currentColor">
@@ -68,197 +94,179 @@
     </span>
   </button>
 
-        <script>
-            document.addEventListener("DOMContentLoaded", () => {
-                // Smooth scroll for navigation items
-                document.querySelectorAll(".nav-item").forEach(item => {
-                    item.addEventListener("click", () => {
-                        const targetId = item.getAttribute('data-target');
-                        const section = document.getElementById(targetId);
-                        if (section) {
-                            section.scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'center'
-                            });
-                        }
-                    });
-                });
+  <script type="module">
+    // Firebase SDK imports
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-                // Smooth scroll for contact button
-                document.getElementById("contactBtn").addEventListener("click", () => {
-                    const contactSection = document.getElementById("contact");
-                    if (contactSection) {
-                        contactSection.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
-                });
+    // Global Firebase variables (provided by Canvas environment)
+    const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+    const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+    const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
 
-                // Counter animation logic
-                const counters = document.querySelectorAll('.counter-value');
-                const counterSection = document.getElementById('counter-section');
-                let countersAnimated = false;
+    let db;
+    let auth;
+    let userId = 'anonymous'; // Default userId
 
-                const animateCounter = (element, target) => {
-                    let start = 0;
-                    const duration = 2000; // 2 seconds
-                    const increment = target / (duration / 10); // Calculate increment based on duration
+    // Function to display custom message box
+    function showMessageBox(message, type = 'success') {
+      const messageBox = document.getElementById('messageBox');
+      const messageText = document.getElementById('messageText');
+      messageText.textContent = message;
+      messageBox.style.display = 'block';
+      if (type === 'error') {
+        messageBox.style.backgroundColor = '#d32f2f'; // Red for error
+      } else {
+        messageBox.style.backgroundColor = '#292955'; // Default blue for success
+      }
+    }
 
-                    const updateCounter = () => {
-                        start += increment;
-                        if (start < target) {
-                            element.textContent = Math.ceil(start) + "+"; // Added "+" sign here
-                            requestAnimationFrame(updateCounter);
-                        } else {
-                            element.textContent = target + "+"; // Added "+" sign here
-                        }
-                    };
-                    requestAnimationFrame(updateCounter);
-                };
+    // Function to hide custom message box
+    function hideMessageBox() {
+      document.getElementById('messageBox').style.display = 'none';
+    }
 
-                // Intersection Observer to trigger animation when section is in view
-                const observer = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting && !countersAnimated) {
-                            document.querySelectorAll('.counter-box').forEach(box => {
-                                const valueElement = box.querySelector('.counter-value');
-                                if (valueElement) {
-                                    const target = parseInt(valueElement.getAttribute('data-target'));
-                                    if (!isNaN(target)) {
-                                        animateCounter(valueElement, target);
-                                    }
-                                }
-                            });
-                            countersAnimated = true; // Ensure animation runs only once
-                            observer.unobserve(entry.target); // Stop observing once animated
-                        }
-                    });
-                }, {
-                    threshold: 0.5
-                }); // Trigger when 50% of the section is visible
 
-                if (counterSection) {
-                    observer.observe(counterSection);
+    document.addEventListener("DOMContentLoaded", async () => {
+      // Initialize Firebase App
+      if (Object.keys(firebaseConfig).length > 0) {
+        const app = initializeApp(firebaseConfig);
+        db = getFirestore(app);
+        auth = getAuth(app);
+
+        // Sign in anonymously or with custom token
+        try {
+          if (initialAuthToken) {
+            await signInWithCustomToken(auth, initialAuthToken);
+          } else {
+            await signInAnonymously(auth);
+          }
+          onAuthStateChanged(auth, (user) => {
+            if (user) {
+              userId = user.uid;
+              console.log("Firebase authenticated. User ID:", userId);
+            } else {
+              console.log("Firebase not authenticated.");
+            }
+          });
+        } catch (error) {
+          console.error("Firebase authentication error:", error);
+          showMessageBox("Failed to connect to backend. Please try again later.", "error");
+        }
+      } else {
+        console.warn("Firebase config not found. Backend functionality will be limited.");
+        showMessageBox("Backend not configured. Contact form submissions will not be saved.", "error");
+      }
+
+      // Attach event listener for the message box close button
+      const closeMessageBoxBtn = document.getElementById('closeMessageBoxBtn');
+      if (closeMessageBoxBtn) {
+        closeMessageBoxBtn.addEventListener('click', hideMessageBox);
+      }
+
+
+      // Smooth scroll for navigation items
+      document.querySelectorAll(".nav-item").forEach(item => {
+        item.addEventListener("click", () => {
+          const targetId = item.getAttribute('data-target');
+          const section = document.getElementById(targetId);
+          if (section) {
+            section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        });
+      });
+
+      // Smooth scroll for contact button
+      document.getElementById("contactBtn").addEventListener("click", () => {
+        const contactSection = document.getElementById("contact");
+        if (contactSection) {
+          contactSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+
+      // Counter animation logic
+      const counterSection = document.getElementById('counter-section');
+      let countersAnimated = false;
+
+      const animateCounter = (element, target) => {
+        let start = 0;
+        const duration = 2000; // 2 seconds
+        const increment = target / (duration / 10); // Calculate increment based on duration
+
+        const updateCounter = () => {
+          start += increment;
+          if (start < target) {
+            element.textContent = Math.ceil(start) + "+";
+            requestAnimationFrame(updateCounter);
+          } else {
+            element.textContent = target + "+";
+          }
+        };
+        requestAnimationFrame(updateCounter);
+      };
+
+      // Intersection Observer to trigger animation when section is in view
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !countersAnimated) {
+            document.querySelectorAll('.counter-box').forEach(box => {
+              const valueElement = box.querySelector('.counter-value');
+              if (valueElement) {
+                const target = parseInt(valueElement.getAttribute('data-target'));
+                if (!isNaN(target)) {
+                  animateCounter(valueElement, target);
                 }
+              }
             });
-        </script>
-    </header>
+            countersAnimated = true; // Ensure animation runs only once
+            observer.unobserve(entry.target); // Stop observing once animated
+          }
+        });
+      }, { threshold: 0.5 }); // Trigger when 50% of the section is visible
 
-    <!-- Hero Section with Truck Image and Overlay -->
-    <section id="home" class="relative w-full h-[300px] md:h-[450px] overflow-hidden">
-        <img src="https://scontent.fcai21-4.fna.fbcdn.net/v/t39.30808-6/494184095_122195797148056258_6909462556598613214_n.jpg?_nc_cat=102&amp;ccb=1-7&amp;_nc_sid=127cfc&amp;_nc_ohc=hoUinRdPxeEQ7kNvwEo9W1l&amp;_nc_oc=Adm6vrHNTVRPLrlyOMDghAgcZDSGSpQzSDRHMbKjYD6LTbr6w1nV_a_iLOHGnOdkFEg&amp;_nc_zt=23&amp;_nc_ht=scontent.fcai21-4.fna&amp;_nc_gid=E0MjiGkQrJ2oO_fdX0BuEg&amp;oh=00_AfNwTniuZaibqWx3BD6qNLORu0pPByTu2goX5vMdUw5m-Q&amp;oe=686C1FD5"
-            alt="Heavy duty truck on a road" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-[#1e1e40]/50 flex flex-col items-center justify-center text-center p-5">
-            <h1 class="text-3xl md:text-5xl text-white max-w-4xl font-extrabold drop-shadow-lg leading-tight animate-fade-in">
-                Your Trusted Partner in Heavy Vehicle Trading and Trucking
-            </h1>
-        </div>
-    </section>
+      if (counterSection) {
+        observer.observe(counterSection);
+      }
 
-    <!-- Counters Section -->
-    <section id="counter-section" class="py-12 md:py-16 px-4 md:px-10 bg-[#292955] flex flex-wrap justify-center gap-6 md:gap-8">
-        <!-- Counter Box: Experience -->
-        <div class="counter-box bg-[#1e1e40] p-6 md:p-8 rounded-xl w-48 h-48 md:w-60 md:h-60 flex flex-col items-center justify-center text-center shadow-lg">
-            <div class="counter-value text-4xl md:text-5xl font-bold text-[#c2a650]" data-target="30">0+</div>
-            <div class="text-lg md:text-xl font-semibold mt-2 text-white">Years of Experience</div>
-        </div>
+      // Handle Contact Form Submission
+      const contactForm = document.getElementById('contactForm');
+      if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+          e.preventDefault(); // Prevent default form submission
 
-        <!-- Counter Box: Trips -->
+          if (!db) {
+            showMessageBox("Backend not initialized. Cannot save form data.", "error");
+            return;
+          }
+          if (!userId || userId === 'anonymous') {
+            showMessageBox("Authentication not ready. Please wait a moment and try again.", "error");
+            return;
+          }
 
+          const formData = new FormData(contactForm);
+          const data = {};
+          for (let [key, value] of formData.entries()) {
+            data[key] = value;
+          }
+          data.timestamp = new Date(); // Add a timestamp
 
-        <!-- Counter Box: Access -->
-        <div class="counter-box bg-[#1e1e40] p-6 md:p-8 rounded-xl w-48 h-48 md:w-60 md:h-60 flex flex-col items-center justify-center text-center shadow-lg">
-            <div class="counter-value text-4xl md:text-5xl font-bold text-[#c2a650]" data-target="1000">0+</div>
-            <div class="text-lg md:text-xl font-semibold mt-2 text-white">Truck & Driver accessible</div>
-        </div>
+          try {
+            // Save to /artifacts/{appId}/public/data/contact_submissions
+            const docRef = await addDoc(collection(db, `artifacts/${appId}/public/data/contact_submissions`), data);
+            console.log("Document written with ID: ", docRef.id);
+            showMessageBox("Your message has been sent successfully!");
+            contactForm.reset(); // Clear the form
+          } catch (e) {
+            console.error("Error adding document: ", e);
+            showMessageBox("Failed to send your message. Please try again.", "error");
+          }
+        });
+      }
+    });
+  </script>
+</header>
 
-        <!-- Static Info Box: Ports -->
-        <div class="counter-box bg-[#1e1e40] p-6 md:p-8 rounded-xl w-48 h-48 md:w-60 md:h-60 flex flex-col items-center justify-center text-center shadow-lg">
-            <div class="text-2xl md:text-3xl font-bold text-[#c2a650]">All Middle Eastern Ports</div>
-            <div class="text-lg md:text-xl font-semibold mt-2 text-white">Transporting From/To</div>
-        </div>
-
-        <!-- Static Info Box: Reliability -->
-        <div class="counter-box bg-[#1e1e40] p-6 md:p-8 rounded-xl w-48 h-48 md:w-60 md:h-60 flex flex-col items-center justify-center text-center shadow-lg">
-            <div class="text-2xl md:text-3xl font-bold text-[#c2a650]">Trusted By Businesses</div>
-            <div class="text-lg md:text-xl font-semibold mt-2 text-white">Across The Region</div>
-        </div>
-
-        <!-- Static Info Box: Support -->
-        <div class="counter-box bg-[#1e1e40] p-6 md:p-8 rounded-xl w-48 h-48 md:w-60 md:h-60 flex flex-col items-center justify-center text-center shadow-lg">
-            <div class="text-2xl md:text-3xl font-bold text-[#c2a650]">24/7 Support</div>
-            <div class="text-lg md:text-xl font-semibold mt-2 text-white">For Your Logistics Needs</div>
-        </div>
-    </section>
-
-
-    <!-- Widgets Section (Original, now removed as counters replace it) -->
-    <!-- <section class="widgets flex flex-wrap justify-center gap-6 md:gap-8 py-12 md:py-16 px-4 md:px-10 bg-[#1e1e40]">
-  <div class="widget-box group bg-[#292955] p-6 md:p-10 rounded-xl w-48 h-48 md:w-60 md:h-60 flex flex-col items-center justify-center transition-all duration-300 cursor-pointer overflow-hidden relative hover:bg-[#3a3a6d] hover:scale-105 shadow-lg">
-    <div class="widget-title text-xl md:text-2xl font-bold mb-2 md:mb-3 text-white">Experience</div>
-    <div class="widget-detail text-sm md:text-base mt-2 text-center text-gray-300">30 Years of Experience</div>
-  </div>
-  <div class="widget-box group bg-[#292955] p-6 md:p-10 rounded-xl w-48 h-48 md:w-60 md:h-60 flex flex-col items-center justify-center transition-all duration-300 cursor-pointer overflow-hidden relative hover:bg-[#3a3a6d] hover:scale-105 shadow-lg">
-    <div class="widget-title text-xl md:text-2xl font-bold mb-2 md:mb-3 text-white">Trips</div>
-    <div class="widget-detail text-sm md:text-base mt-2 text-center text-gray-300">1500+ Trips Across Border Completed Last Year</div>
-  </div>
-  <div class="widget-box group bg-[#292955] p-6 md:p-10 rounded-xl w-48 h-48 md:w-60 md:h-60 flex flex-col items-center justify-center transition-all duration-300 cursor-pointer overflow-hidden relative hover:bg-[#3a3a6d] hover:scale-105 shadow-lg">
-    <div class="widget-title text-xl md:text-2xl font-bold mb-2 md:mb-3 text-white">Ports</div>
-    <div class="widget-detail text-sm md:text-base mt-2 text-center text-gray-300">Transporting From/To All Middle Eastern Ports</div>
-  </div>
-  <div class="widget-box group bg-[#292955] p-6 md:p-10 rounded-xl w-48 h-48 md:w-60 md:h-60 flex flex-col items-center justify-center transition-all duration-300 cursor-pointer overflow-hidden relative hover:bg-[#3a3a6d] hover:scale-105 shadow-lg">
-    <div class="widget-title text-xl md:text-2xl font-bold mb-2 md:mb-3 text-white">Access</div>
-    <div class="widget-detail text-sm md:text-base mt-2 text-center text-gray-300">Access to 1000+ Trucks and Drivers</div>
-  </div>
-  <div class="widget-box group bg-[#292955] p-6 md:p-10 rounded-xl w-48 h-48 md:w-60 md:h-60 flex flex-col items-center justify-center transition-all duration-300 cursor-pointer overflow-hidden relative hover:bg-[#3a3a6d] hover:scale-105 shadow-lg">
-    <div class="widget-title text-xl md:text-2xl font-bold mb-2 md:mb-3 text-white">Reliability</div>
-    <div class="widget-detail text-sm md:text-base mt-2 text-center text-gray-300">Trusted By Businesses Across The Region</div>
-  </div>
-  <div class="widget-box group bg-[#292955] p-6 md:p-10 rounded-xl w-48 h-48 md:w-60 md:h-60 flex flex-col items-center justify-center transition-all duration-300 cursor-pointer overflow-hidden relative hover:bg-[#3a3a6d] hover:scale-105 shadow-lg">
-    <div class="widget-title text-xl md:text-2xl font-bold mb-2 md:mb-3 text-white">Support</div>
-    <div class="widget-detail text-sm md:text-base mt-2 text-center text-gray-300">24/7 Support For Your Logistics Needs</div>
-  </div>
-</section> -->
-
-    <!-- About Section -->
-    <section id="about" class="py-12 md:py-16 px-4 md:px-10 bg-[#292955] shadow-inner">
-        <h2 class="text-2xl md:text-3xl font-bold mb-5 text-center text-white">About Us</h2>
-        <p class="max-w-3xl mx-auto text-sm md:text-base leading-relaxed text-center text-gray-200">
-            Elbaz Auto Trade specializes in heavy vehicle trading and trucking solutions. We are dedicated to connecting Companies and Trucks, offering reliable service and expert knowledge in the field. Our commitment to excellence ensures smooth transactions and
-            efficient logistics for all our clients.
-        </p>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-12 md:py-16 px-4 md:px-10 bg-[#1e1e40] shadow-xl">
-        <h2 class="text-2xl md:text-3xl font-bold mb-5 text-center text-white">Contact Us</h2>
-        <form class="max-w-2xl mx-auto flex flex-col gap-4 md:gap-5 p-6 bg-[#292955] rounded-xl shadow-lg">
-            <input type="text" name="name" placeholder="Your Name" required class="p-3 rounded-md border-none text-base text-gray-900 focus:ring-2 focus:ring-[#c2a650] focus:outline-none">
-            <input type="email" name="email" placeholder="Your Email" required class="p-3 rounded-md border-none text-base text-gray-900 focus:ring-2 focus:ring-[#c2a650] focus:outline-none">
-            <input type="tel" name="phone" placeholder="Your Phone Number" required class="p-3 rounded-md border-none text-base text-gray-900 focus:ring-2 focus:ring-[#c2a650] focus:outline-none">
-            <textarea name="message" rows="5" placeholder="Your Message" required class="p-3 rounded-md border-none text-base text-gray-900 resize-y focus:ring-2 focus:ring-[#c2a650] focus:outline-none"></textarea>
-            <button type="submit" class="p-3 bg-[#c2a650] border-none rounded-md text-base font-semibold cursor-pointer text-white hover:opacity-90 transition duration-300 focus:outline-none focus:ring-2 focus:ring-[#c2a650]">Send Message</button>
-        </form>
-
-        <div class="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-10 mt-10">
-            <!-- Call Us -->
-            <div class="text-center">
-                <h3 class="text-xl md:text-2xl font-bold mb-2">Call Us</h3>
-                <a href="tel:+1234567890" class="text-lg md:text-xl text-[#c2a650] hover:underline">+20 10 66 22 55 99 / +20 10 999 65 22 8</a>
-            </div>
-            <!-- Email Us -->
-            <div class="text-center">
-                <h3 class="text-xl md:text-2xl font-bold mb-2">Email Us</h3>
-                <a href="mailto:info@elbazautotrade.com" class="text-lg md:text-xl text-[#c2a650] hover:underline">info@elbazautotrade.com</a>
-            </div>
-        </div>
-
-        <!-- Footer -->
-        <div class="text-center text-sm text-gray-400 mt-8">
-            &copy; 2025 Elbaz Auto Trade. All rights reserved.
-        </div>
-    </section>
-
-</body>
-
-</html>
+<!-- Hero Section with Truck Image and Overlay -->
+<section id="home" class="relative w-full h-[300px] md:h-[450px] overflow-hidden">
+  <img src="https://scontent.fcai21-4.fna.fbcdn.net/v/t39.30808-6/494184095_122195797148056258_6909462556598613214_n.jpg?_nc_cat=102&amp;ccb=1-7&amp;_nc_sid=127cfc&amp;_nc_ohc
